@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 8, 2013 4:19:19 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="teabooker.model.FoodInfo" table="food">
+		<id name="foodId" type="java.lang.Integer">
+			<column name="Food_Id" />
+			<generator class="identity" />
+		</id>
+		<property name="foodName" type="string">
+			<column name="Food_Name" length="200" not-null="true" />
+		</property>
+		<property name="foodPrice" type="string">
+			<column name="Food_Price" length="10" not-null="true" />
+		</property>
+		<property name="foodStatus" type="int">
+			<column name="Food_Status" not-null="true" />
+		</property>
+		<property name="shopId" type="int">
+			<column name="Shop_ID" not-null="true" />
+		</property>
+		<property name="thumbnail" type="string">
+			<column name="Thumbnail" length="200" />
+		</property>
+		<set name="orderInfoSet" fetch="select">
+			<key column="Food_Id"></key>
+			<one-to-many class="teabooker.model.OrderInfo" not-found="ignore" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 8, 2013 4:19:19 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="teabooker.model.EventInfo" table="eventinfo">
+        <id name="eventId" type="java.lang.Integer">
+            <column name="Event_Id" />
+            <generator class="identity" />
+        </id>
+        <property name="eventStatus" type="int">
+            <column name="Event_Status" not-null="true" />
+        </property>
+        <property name="ownerId" type="int">
+            <column name="Owner_Id" not-null="true" />
+        </property>
+        <property name="eventStartTime" type="timestamp">
+            <column name="EventStart_Time" length="0" not-null="true" />
+        </property>
+        <property name="eventEndTime" type="timestamp">
+            <column name="EventEnd_Time" length="0" not-null="true" />
+        </property>
+        <property name="phase" type="int">
+            <column name="Phase" not-null="true" />
+        </property>
+        <property name="eventName" type="string">
+            <column name="Event_Name" length="200" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

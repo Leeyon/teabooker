@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>teabooker API document</title>
+<script type="text/javascript">
+	//<summary>
+	//    格式化显示日期时间
+	//</summary>
+	// <param name="x">待显示的日期时间，例如new Date()</param>
+	// <param name="y">需要显示的格式，例如yyyy-MM-dd hh:mm:ss</param>
+	function date2str(x, y) {
+		var z = {
+			y : x.getFullYear(),
+			M : x.getMonth() + 1,
+			d : x.getDate(),
+			h : x.getHours(),
+			m : x.getMinutes(),
+			s : x.getSeconds()
+		};
+		return y.replace(/(y+|M+|d+|h+|m+|s+)/g, function(v) {
+			return ((v.length > 1 ? "0" : "") + eval('z.' + v.slice(-1)))
+					.slice(-(v.length > 2 ? v.length : 2))
+		});
+	}
+
+	document.write(date2str(new Date(), "yyyy-mm-dd hh:mm:ss") + '</br>');
+	document.write(new Date().getTime() + '</br>');
+</script>
+</head>
+<body>
+	<div>
+		<div>
+			<b>User API</b>
+		</div>
+		<table border='1'>
+			<thead>
+				<tr>
+					<td>API Name</td>
+					<td>HTTP Method</td>
+					<td>Content-Type</td>
+					<td>URL</td>
+					<td>Parameters</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Create a new user</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/user?method=creatnewuser</td>
+					<td>uname=jack&upass=jack&nickName=Jack&phone=12345678&profileImg=abc&type=0</td>
+				</tr>
+				<tr>
+					<td>Get user by user id</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/user?method=getuserbyid&uid=1</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Get user by user name</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/user?method=getuserbyname&uname=test</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>user login</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/user?method=userlogin</td>
+					<td>uname=test&upass=test</td>
+				</tr>
+				<tr>
+					<td>update user</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/user?method=updateuser</td>
+					<td>uid=1&uname=test&nickName=test1&phone=87654321</td>
+				</tr>
+				<tr>
+					<td>reset user password</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/user?method=resetuserpass</td>
+					<td>uid=1&oldpass=test1&newpass=test</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<div>
+			<b>Group API</b>
+		</div>
+		<table border='1'>
+			<thead>
+				<tr>
+					<td>API Name</td>
+					<td>HTTP Method</td>
+					<td>Content-Type</td>
+					<td>URL</td>
+					<td>Parameters</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Create a new group</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/group?method=creategroup</td>
+					<td>gname=abc&gdesc=abc&uid=1</td>
+				</tr>
+				<tr>
+					<td>Update group info</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/group?method=updategroup</td>
+					<td>gname=abc&gdesc=abc&gid=1</td>
+				</tr>
+				<tr>
+					<td>User apply the permisson to join the group</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/group?method=joingroup</td>
+					<td>uid=2&gid=1&rmsg=abc</td>
+				</tr>
+				<tr>
+					<td>User apply the permission to join the group</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/group?method=joingroup</td>
+					<td>uid=2&gid=1&rmsg=abc</td>
+				</tr>
+				<tr>
+					<td>User apply the permission to join the group</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/group?method=joingroup</td>
+					<td>uid=2&gid=1&rmsg=abc</td>
+				</tr>
+				<tr>
+					<td>Update the group memeber status by onwer</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/group?method=updategroupuserstatus</td>
+					<td>uid=2&gid=1&status=1</td>
+				</tr>
+				<tr>
+					<td>Get groups by query</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/group?method=getgroupbyquery&q=123</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Get groups by user</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/group??method=getgroupsbyuser&uid=1</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Get group members</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/group??method=method=getgroupmemebers&gid=1</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Get group members by user status</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/group??method=method=getgroupmemebers&gid=1&status=1</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<div>
+			<b>Shop API</b>
+		</div>
+		<table border='1'>
+			<thead>
+				<tr>
+					<td>API Name</td>
+					<td>HTTP Method</td>
+					<td>Content-Type</td>
+					<td>URL</td>
+					<td>Parameters</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Get all shops</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/user?method=getshops</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Get shop addresses by shop id</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/user?method=getshopaddress&sid=1</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<div>
+			<b>Food API</b>
+		</div>
+		<table border='1'>
+			<thead>
+				<tr>
+					<td>API Name</td>
+					<td>HTTP Method</td>
+					<td>Content-Type</td>
+					<td>URL</td>
+					<td>Parameters</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Get shop food</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/food?method=getshopfood&sid=1</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<div>
+			<b>Event API</b>
+		</div>
+		<table border='1'>
+			<thead>
+				<tr>
+					<td>API Name</td>
+					<td>HTTP Method</td>
+					<td>Content-Type</td>
+					<td>URL</td>
+					<td>Parameters</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Create a new event</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/event?method=createevent</td>
+					<td>t=This is event
+						title&sid=1&aid=1&oid=1&gid=1&endtime=2013/09/12 19:09:27</td>
+				</tr>
+				<tr>
+					<td>Get event</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/event?method=getevent&eid=6</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Get all today's event</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/event?method=getevents</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Get events by user</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/event?method=getuserevents&uid=1</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Get event members</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/event?method=geteventmembers&eid=6</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Update event status by owner</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/event?method=updateeventstatus</td>
+					<td>eid=7&uid=1&status=0</td>
+				</tr>
+				<tr>
+					<td>Update event user status</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/event?method=updateeventuserstatus</td>
+					<td>eid=7&uid=1&status=0</td>
+				</tr>
+				<tr>
+					<td>User join event</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/event?method=joinevent</td>
+					<td>eid=7&uid=1</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<div>
+			<b>Order API</b>
+		</div>
+		<table border='1'>
+			<thead>
+				<tr>
+					<td>API Name</td>
+					<td>HTTP Method</td>
+					<td>Content-Type</td>
+					<td>URL</td>
+					<td>Parameters</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Create order by user for per events</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/order?method=createorders</td>
+					<td>orders=[{"userId":1,"foodId":1,"foodCount":2,"eventId":6,"orderStatus":1,"createDate":"Nov
+						15, 2013 3:23:54 PM","comment":"test
+						order0"},{"userId":1,"foodId":2,"foodCount":1,"eventId":6,"orderStatus":1,"createDate":"Nov
+						15, 2013 3:23:54 PM","comment":"test
+						order1"},{"userId":1,"foodId":3,"foodCount":6,"eventId":6,"orderStatus":1,"createDate":"Nov
+						15, 2013 3:23:54 PM","comment":"test order2"}]&uid=1&eid=6</td>
+				</tr>
+				<tr>
+					<td>Get shoppingcart orders and food by user</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/order?method=getuserorders&uid=1</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Get shoppingcart orders and food by user and event</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/order?method=geteventuserorders&uid=1&eid=6</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Update order status</td>
+					<td>POST</td>
+					<td>application/x-www-form-urlencoded</td>
+					<td>domian/teabooker/order?method=updateorderstatus</td>
+					<td>oid=14&status=0</td>
+				</tr>
+				<tr>
+					<td>Get event orders</td>
+					<td>GET</td>
+					<td></td>
+					<td>domian/teabooker/order?method=geteventorders&eid=6</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

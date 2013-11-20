@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 8, 2013 4:19:19 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="teabooker.model.OrderInfo" table="order">
+		<id name="orderId" type="java.lang.Integer">
+			<column name="Order_Id" />
+			<generator class="identity" />
+		</id>
+		<property name="userId" type="int">
+			<column name="User_id" not-null="true" />
+		</property>
+		<property name="foodId" type="int">
+			<column name="Food_Id" not-null="true" />
+		</property>
+		<property name="foodCount" type="int">
+			<column name="Food_Count" not-null="true" />
+		</property>
+		<property name="eventId" type="int">
+			<column name="Event_Id" not-null="true" />
+		</property>
+		<property name="orderStatus" type="int">
+			<column name="Order_Status" not-null="true" />
+		</property>
+		<property name="createDate" type="timestamp">
+			<column name="Create_Date" length="0" not-null="true" />
+		</property>
+		<property name="comment" type="string">
+			<column name="Comment" length="300" />
+		</property>
+		<many-to-one name="orderFood" class="teabooker.model.FoodInfo"
+			insert="false" update="false" column="Food_Id" foreign-key="foodId" />
+	</class>
+</hibernate-mapping>

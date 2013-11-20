@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 8, 2013 4:19:19 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="teabooker.model.EventShopInfo" table="event_shop">
+		<id name="id" type="java.lang.Integer">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+		<property name="eventId" type="int">
+			<column name="Event_Id" not-null="true" />
+		</property>
+		<property name="shopId" type="int">
+			<column name="Shop_Id" not-null="true" />
+		</property>
+		<property name="shopAddressId" type="int">
+			<column name="Shop_Address_Id" not-null="true" />
+		</property>
+		<many-to-one name="shopInfo" class="teabooker.model.ShopInfo"
+			insert="false" update="false" column="Shop_Id" property-ref="shopId"
+			fetch="select" />
+		<many-to-one name="addressInfo" class="teabooker.model.ShopAddressInfo"
+			insert="false" update="false" column="Shop_Address_Id" property-ref="id"
+			fetch="select" />
+	</class>
+</hibernate-mapping>
